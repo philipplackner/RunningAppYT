@@ -3,6 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
     app:startDestination="@id/setupFragment">
 
+    <action android:id="@+id/action_global_trackingFragment"
+        app:destination="@id/trackingFragment"
+        app:launchSingleTop="true" />
+
     <fragment
         android:id="@+id/runFragment"
         android:name="com.androiddevs.runningappyt.ui.fragments.RunFragment"
