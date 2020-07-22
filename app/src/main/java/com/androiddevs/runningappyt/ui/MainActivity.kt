@@ -1,22 +1,31 @@
 package com.androiddevs.runningappyt.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.androiddevs.runningappyt.R
-import com.androiddevs.runningappyt.db.RunDAO
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import kotlinx.android.synthetic.main.activity_main.*
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var runDao: RunDAO
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d("runDAo", runDao.hashCode().toString())
+
+        setSupportActionBar(toolbar)
+        bottomNavigationView.setupWithNavController(navHostFragment.findNavController())
+
+        navHostFragment.findNavController()
+            .addOnDestinationChangedListener { _, destination, _ ->
+                when(destination.id) {
+                    R.id.settingsFragment, R.id.runFragment, R.id.statisticsFragment ->
+                        bottomNavigationView.isVisible = true
+                    else -> bottomNavigationView.isVisible = false
+                }
+            }
     }
 }
