@@ -29,6 +29,10 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/API_KEY" />
+
+        <service android:name=".services.TrackingService"
+            android:foregroundServiceType="location" />
+
     </application>
 
 </manifest>
