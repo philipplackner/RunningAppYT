@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_tracking.*
 
 class TrackingFragment : Fragment(R.layout.fragment_tracking) {
 
-    private val viewmodel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels()
 
     private var map: GoogleMap? = null
 
@@ -65,9 +65,4 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
         super.onSaveInstanceState(outState)
         mapView?.onSaveInstanceState(outState)
     }
-
-    /*override fun onDestroy() {
-        super.onDestroy()
-        mapView.onDestroy()
-    }*/
 }
