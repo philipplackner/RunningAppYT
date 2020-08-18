@@ -13,6 +13,7 @@ import com.androiddevs.runningappyt.other.Constants.ACTION_START_RESUME_SERVICE
 import com.androiddevs.runningappyt.other.Constants.MAP_ZOOM
 import com.androiddevs.runningappyt.other.Constants.POLYLINE_COLOR
 import com.androiddevs.runningappyt.other.Constants.POLYLINE_WIDTH
+import com.androiddevs.runningappyt.other.TrackingUtility
 import com.androiddevs.runningappyt.services.PolyLine
 import com.androiddevs.runningappyt.services.TrackingService
 import com.androiddevs.runningappyt.ui.viewmodels.MainViewModel
@@ -20,6 +21,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.PolylineOptions
 import kotlinx.android.synthetic.main.fragment_tracking.*
+import java.util.*
 
 class TrackingFragment : Fragment(R.layout.fragment_tracking) {
 
@@ -27,6 +29,7 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
 
     private var isTracking = false
     private var pathPoints = mutableListOf<PolyLine>()
+    private var currentTimeMillis = 0L
 
     private var map: GoogleMap? = null
 
@@ -55,6 +58,12 @@ class TrackingFragment : Fragment(R.layout.fragment_tracking) {
             pathPoints = it
             addLatestPolyLine()
             moveCameraToUser()
+        })
+
+        TrackingService.timeRunInMillis.observe(viewLifecycleOwner, Observer {
+            currentTimeMillis = it
+            val formattedTime = TrackingUtility.getFormattedStopwatchTime(it, true)
+            tvTimer.text = formattedTime
         })
     }
 
