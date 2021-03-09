@@ -231,7 +231,7 @@ class TrackingService : LifecycleService() {
 
         timeRunInSeconds.observe(this, Observer {
             val notification = curNotificationBuilder
-                .setContentText(TrackingUtility.getFormattedStopWatchTime(it * 1000L))
+                .setContentText(TrackingUtility.getFormattedStopWatchTime(it))
             notificationManager.notify(NOTIFICATION_ID, notification.build())
         })
     }
