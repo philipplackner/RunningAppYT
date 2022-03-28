@@ -7,5 +7,9 @@
         <item>Average Speed</item>
         <item>Calories Burned</item>
     </string-array>
+    <string name="settings">Settings</string>
+    <string name="statistics">Statistics</string>
+    <string name="your_runs">Your Runs</string>
+    <string name="cancel_tracking">Cancel Run</string>
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">ENTER YOUR API KEY HERE</string>
 </resources>
