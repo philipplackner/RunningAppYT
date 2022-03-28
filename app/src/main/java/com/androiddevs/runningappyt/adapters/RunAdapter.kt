@@ -46,7 +46,6 @@ class RunAdapter : RecyclerView.Adapter<RunAdapter.RunViewHolder>() {
         override fun areContentsTheSame(oldItem: Run, newItem: Run): Boolean {
             return oldItem.hashCode() == newItem.hashCode()
         }
-
     }
 
     val differ = AsyncListDiffer(this, diffCallBack)
